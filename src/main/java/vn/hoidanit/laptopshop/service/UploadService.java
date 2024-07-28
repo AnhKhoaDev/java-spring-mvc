@@ -18,6 +18,9 @@ public class UploadService {
     }
 
     public String handleUploadFile(MultipartFile file, String targetFolder) {
+        if (file.isEmpty()) {
+            return "";
+        }
         String rootPath = this.servletContext.getRealPath("/resources/images");
         String fileName = "";
         try {
@@ -27,7 +30,7 @@ public class UploadService {
             if (!dir.exists())
                 dir.mkdirs();
 
-        // Create the file on server
+            // Create the file on server
             fileName = System.currentTimeMillis() + "-" + file.getOriginalFilename();
             File serverFile = new File(dir.getAbsolutePath() + File.separator + fileName);
             BufferedOutputStream stream = new BufferedOutputStream(

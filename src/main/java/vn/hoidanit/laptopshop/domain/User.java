@@ -1,10 +1,7 @@
 package vn.hoidanit.laptopshop.domain;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 import java.util.List;
 
@@ -17,17 +14,19 @@ public class User {
     private long id;
 
     @NotNull
-    @Email
+    @Email(message = "Email không hợp lệ", regexp = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$")
     private String email;
+
     @NotNull
-    @Min(3)
+    @Min(value = 3, message = "Password phải có tối thiểu 3 ký tự")
     private String password;
+
     @NotNull
-    @Min(3)
+    @Min(value = 3, message = "FullName phải có tối thiểu 3 ký tự")
     private String fullName;
-    @NotNull
+
     private String address;
-    @NotNull
+    
     private String phone;
 
     private String avatar;
