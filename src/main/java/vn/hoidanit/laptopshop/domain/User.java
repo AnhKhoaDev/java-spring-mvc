@@ -39,6 +39,17 @@ public class User {
     @OneToMany(mappedBy = "user")
     List<Order> orders;
 
+    @OneToOne(mappedBy = "user")
+    private Cart cart;
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     public long getId() {
         return id;
     }
