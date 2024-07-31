@@ -10,7 +10,7 @@ public class OrderDetail {
     private Long id;
 
     private Long quantity;
-    private Long price;
+    private double price;
 
     @ManyToOne
     @JoinColumn(name = "order_id")
@@ -36,11 +36,11 @@ public class OrderDetail {
         this.quantity = quantity;
     }
 
-    public Long getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(Long price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
