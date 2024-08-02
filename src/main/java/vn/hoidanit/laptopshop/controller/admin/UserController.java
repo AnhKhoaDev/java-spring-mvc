@@ -38,7 +38,7 @@ public class UserController {
     public String getHomePage(Model model) {
         List<User> arrUsers = this.userService.getAllUsersByEmail("1@gmail.com");
         System.out.println(arrUsers);
-        model.addAttribute("eric", "test");
+        model.addAttribute("test", "test");
         return "hello";
     }
 
@@ -61,7 +61,7 @@ public class UserController {
         Pageable pageable = PageRequest.of(page - 1, 1);
         Page<User> usersPage = this.userService.getAllUsers(pageable);
         List<User> users = usersPage.getContent();
-        model.addAttribute("users1", users);
+        model.addAttribute("users", users);
 
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", usersPage.getTotalPages());
@@ -113,15 +113,15 @@ public class UserController {
 
     @PostMapping("/admin/user/update")
     public String postUpdateUser(Model model,
-                                 @ModelAttribute("newUser") User hoidanit,
-                                 @RequestParam("hoidanitFile") MultipartFile file) {
+                                 @ModelAttribute("newUser") User user,
+                                 @RequestParam("hoidanit") MultipartFile file) {
 //        String avatar = this.uploadService.handleUploadFile(file, "avatar");
-        User currentUser = this.userService.getUserById(hoidanit.getId());
+        User currentUser = this.userService.getUserById(user.getId());
         if (currentUser != null) {
-            currentUser.setAddress(hoidanit.getAddress());
-            currentUser.setFullName(hoidanit.getFullName());
-            currentUser.setPhone(hoidanit.getPhone());
-            currentUser.setRole(this.userService.getRoleByName(hoidanit.getRole().getName()));
+            currentUser.setAddress(user.getAddress());
+            currentUser.setFullName(user.getFullName());
+            currentUser.setPhone(user.getPhone());
+            currentUser.setRole(this.userService.getRoleByName(user.getRole().getName()));
 //            currentUser.setAvatar(hoidanit.getAvatar());
 
             this.userService.handleSaveUser(currentUser);
@@ -137,8 +137,8 @@ public class UserController {
     }
 
     @PostMapping("admin/user/delete")
-    public String postDeleteUser(Model model, @ModelAttribute("newUser") User eric) {
-        this.userService.deleteAUser(eric.getId());
+    public String postDeleteUser(Model model, @ModelAttribute("newUser") User user) {
+        this.userService.deleteAUser(user.getId());
         return "redirect:/admin/user";
     }
 

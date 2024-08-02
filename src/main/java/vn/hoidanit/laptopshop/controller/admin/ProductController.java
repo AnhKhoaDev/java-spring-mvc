@@ -41,9 +41,8 @@ public class ProductController {
         }
         Pageable pageable = PageRequest.of(page - 1, 2);
         Page<Product> prs = this.productService.fetchProducts(pageable);
-        List<Product> list = prs.getContent();
-        model.addAttribute("products", list);
-
+        List<Product> productList = prs.getContent();
+        model.addAttribute("products", productList);
         model.addAttribute("currentPage", page);
         model.addAttribute("totalPages", prs.getTotalPages());
         return "admin/product/show";
@@ -64,7 +63,6 @@ public class ProductController {
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/create";
         }
-
         // upload image
         String image = this.uploadService.handleUploadFile(file, "product");
         pr.setImage(image);
@@ -85,7 +83,6 @@ public class ProductController {
     public String handleUpdateProduct(@ModelAttribute("newProduct") @Valid Product pr,
                                       BindingResult newProductBindingResult,
                                       @RequestParam("hoidanitFile") MultipartFile file) {
-
         // validate
         if (newProductBindingResult.hasErrors()) {
             return "admin/product/update";
