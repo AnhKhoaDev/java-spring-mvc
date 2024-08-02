@@ -22,6 +22,9 @@
     <link href="/client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/client/css/bootstrap.min.css" rel="stylesheet">
     <link href="/client/css/style.css" rel="stylesheet">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -39,7 +42,8 @@
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Chi Tiết Sản Phẩm
+                        <li class="breadcrumb-item active" aria-current="page">
+                            Chi Tiết Sản Phẩm
                         </li>
                     </ol>
                 </nav>
@@ -71,7 +75,6 @@
                         <p class="mb-4">
                             ${product.shortDesc}
                         </p>
-
                         <div class="input-group quantity mb-5" style="width: 100px;">
                             <div class="input-group-btn">
                                 <button class="btn btn-sm btn-minus rounded-circle bg-light border">
@@ -87,22 +90,21 @@
                                 </button>
                             </div>
                         </div>
-                        <form action="/add-product-from-view-detail" method="post"
-                              modelAttribute="product">
-                            <input type="hidden" name="${_csrf.parameterName}"
-                                   value="${_csrf.token}"/>
-                            <input class="form-control d-none" type="text" value="${product.id}"
-                                   name="id"/>
+                        <!-- <form action="/add-product-from-view-detail" method="post"
+                            modelAttribute="product"> -->
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input class="form-control d-none" type="text" value="${product.id}"
+                               name="id"/>
 
-                            <input class="form-control d-none" type="text" name="quantity"
-                                   id="cartDetails0.quantity"/>
-                            <button
-                                    class="btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary"><i
+                        <input class="form-control d-none" type="text" name="quantity"
+                               id="cartDetails0.quantity" value="1"/>
+                        <button data-product-id="${product.id}"
+                                class="btnAddToCartDetail btn border border-secondary rounded-pill px-4 py-2 mb-4 text-primary">
+                            <i
                                     class="fa fa-shopping-bag me-2 text-primary"></i>
-                                Add to cart
-                            </button>
-                        </form>
-
+                            Add to cart
+                        </button>
+                        <!-- </form> -->
                     </div>
                     <div class="col-lg-12">
                         <nav>
@@ -120,18 +122,14 @@
                                 <p>
                                     ${product.detailDesc}
                                 </p>
-
                             </div>
-
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="col-lg-4 col-xl-3">
                 <div class="row g-4 fruite">
                     <div class="col-lg-12">
-
                         <div class="mb-4">
                             <h4>Categories</h4>
                             <ul class="list-unstyled fruite-categorie">
@@ -174,7 +172,6 @@
 
     </div>
 </div>
-
 <jsp:include page="../layout/footer.jsp"/>
 
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top">
@@ -187,8 +184,8 @@
 <script src="/client/lib/waypoints/waypoints.min.js"></script>
 <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
 <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
-
 <script src="/client/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 </body>
 
 </html>

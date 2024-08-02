@@ -17,6 +17,10 @@
     <link href="/client/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
     <link href="/client/css/bootstrap.min.css" rel="stylesheet">
     <link href="/client/css/style.css" rel="stylesheet">
+    <meta name="_csrf" content="${_csrf.token}"/>
+    <meta name="_csrf_header" content="${_csrf.headerName}"/>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.css" rel="stylesheet">
+
 </head>
 
 <body>
@@ -24,8 +28,12 @@
      class="show w-100 vh-100 bg-white position-fixed translate-middle top-50 start-50  d-flex align-items-center justify-content-center">
     <div class="spinner-grow text-primary" role="status"></div>
 </div>
+
 <jsp:include page="../layout/header.jsp"/>
+
+
 <jsp:include page="../layout/banner.jsp"/>
+
 <div class="container-fluid fruite py-5">
     <div class="container py-5">
         <div class="tab-class text-center">
@@ -74,16 +82,18 @@
                                                         <fmt:formatNumber type="number"
                                                                           value="${product.price}"/> đ
                                                     </p>
-                                                    <form action="/add-product-to-cart/${product.id}"
-                                                          method="post">
-                                                        <input type="hidden"
-                                                               name="${_csrf.parameterName}"
-                                                               value="${_csrf.token}"/>
-                                                        <button class="mx-auto btn border border-secondary rounded-pill px-3 text-primary">
-                                                            <i class="fa fa-shopping-bag me-2 text-primary"></i>
-                                                            Add to cart
-                                                        </button>
-                                                    </form>
+                                                    <!-- <form action="/add-product-to-cart/${product.id}"
+                                                                        method="post">
+                                                                        <input type="hidden"
+                                                                            name="${_csrf.parameterName}"
+                                                                            value="${_csrf.token}" /> -->
+
+                                                    <button data-product-id="${product.id}"
+                                                            class="btnAddToCartHomepage mx-auto btn border border-secondary rounded-pill px-3 text-primary">
+                                                        <i
+                                                                class="fa fa-shopping-bag me-2 text-primary"></i>
+                                                        Add to cart
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -97,8 +107,11 @@
         </div>
     </div>
 </div>
+
 <jsp:include page="../layout/feature.jsp"/>
+
 <jsp:include page="../layout/footer.jsp"/>
+
 <a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top">
     <i class="fa fa-arrow-up"></i>
 </a>
@@ -110,6 +123,7 @@
 <script src="/client/lib/lightbox/js/lightbox.min.js"></script>
 <script src="/client/lib/owlcarousel/owl.carousel.min.js"></script>
 <script src="/client/js/main.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-toast-plugin/1.3.2/jquery.toast.min.js"></script>
 </body>
 
 </html>
