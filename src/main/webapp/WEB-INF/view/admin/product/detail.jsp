@@ -35,13 +35,10 @@
                             <div class="d-flex justify-content-between">
                                 <h3>Product detail with id = ${id}</h3>
                             </div>
-
                             <hr/>
-
                             <div class="card" style="width: 60%">
                                 <img class="card-img-top" src="/images/product/${product.image}"
                                      alt="Card image cap">
-
                                 <div class="card-header">
                                     Product information
                                 </div>
@@ -52,11 +49,8 @@
                                 </ul>
                             </div>
                             <a href="/admin/product" class="btn btn-success mt-3">Back</a>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </main>
@@ -66,7 +60,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
-
 </body>
-
 </html>

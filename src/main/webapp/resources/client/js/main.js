@@ -1,6 +1,7 @@
 (function ($) {
     "use strict";
 
+    // Spinner
     var spinner = function () {
         setTimeout(function () {
             if ($('#spinner').length > 0) {
@@ -11,6 +12,7 @@
     spinner(0);
 
 
+    // Fixed Navbar
     $(window).scroll(function () {
         if ($(window).width() < 992) {
             if ($(this).scrollTop() > 55) {
@@ -27,6 +29,8 @@
         }
     });
 
+
+    // Back to top button
     $(window).scroll(function () {
         if ($(this).scrollTop() > 300) {
             $('.back-to-top').fadeIn('slow');
@@ -40,6 +44,7 @@
     });
 
 
+    // Testimonial carousel
     $(".testimonial-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 2000,
@@ -73,6 +78,7 @@
     });
 
 
+    // vegetable carousel
     $(".vegetable-carousel").owlCarousel({
         autoplay: true,
         smartSpeed: 1500,
@@ -126,13 +132,13 @@
         const navElement = $("#navbarCollapse");
         const currentUrl = window.location.pathname;
         navElement.find('a.nav-link').each(function () {
-            const link = $(this);
-            const href = link.attr('href');
+            const link = $(this); // Get the current link in the loop
+            const href = link.attr('href'); // Get the href attribute of the link
 
             if (href === currentUrl) {
-                link.addClass('active');
+                link.addClass('active'); // Add 'active' class if the href matches the current URL
             } else {
-                link.removeClass('active');
+                link.removeClass('active'); // Remove 'active' class if the href does not match
             }
         });
     });
@@ -172,11 +178,13 @@
         const input = button.parent().parent().find('input');
         input.val(newVal);
 
+        //set form index
         const index = input.attr("data-cart-detail-index")
         const el = document.getElementById(`cartDetails${index}.quantity`);
         $(el).val(newVal);
 
 
+        //get price
         const price = input.attr("data-cart-detail-price");
         const id = input.attr("data-cart-detail-id");
 
@@ -186,6 +194,7 @@
             priceElement.text(formatCurrency(newPrice.toFixed(2)) + " đ");
         }
 
+        //update total cart price
         const totalPriceElement = $(`p[data-cart-total-price]`);
 
         if (totalPriceElement && totalPriceElement.length) {
@@ -197,24 +206,30 @@
                 newTotal = change * (+price) + (+currentTotal);
             }
 
+            //reset change
             change = 0;
 
+            //update
             totalPriceElement?.each(function (index, element) {
+                //update text
                 $(totalPriceElement[index]).text(formatCurrency(newTotal.toFixed(2)) + " đ");
 
+                //update data-attribute
                 $(totalPriceElement[index]).attr("data-cart-total-price", newTotal);
             });
         }
     });
 
     function formatCurrency(value) {
+        // Use the 'vi-VN' locale to format the number according to Vietnamese currency format
+        // and 'VND' as the currency type for Vietnamese đồng
         const formatter = new Intl.NumberFormat('vi-VN', {
             style: 'decimal',
             minimumFractionDigits: 0, // No decimal part for whole numbers
         });
 
         let formatted = formatter.format(value);
-
+        // Replace dots with commas for thousands separator
         formatted = formatted.replace(/\./g, ',');
         return formatted;
     }
@@ -251,12 +266,19 @@
         searchParams.set('page', '1');
         searchParams.set('sort', sortValue);
 
+        //reset
+        searchParams.delete('factory');
+        searchParams.delete('target');
+        searchParams.delete('price');
+
         if (factoryArr.length > 0) {
             searchParams.set('factory', factoryArr.join(','));
         }
+
         if (targetArr.length > 0) {
             searchParams.set('target', targetArr.join(','));
         }
+
         if (priceArr.length > 0) {
             searchParams.set('price', priceArr.join(','));
         }
@@ -298,5 +320,6 @@
         const sort = params.get('sort');
         $(`input[type="radio"][name="radio-sort"][value="${sort}"]`).prop('checked', true);
     }
+
 })(jQuery);
 

@@ -71,12 +71,10 @@
                                 <c:set var="errorQuantity">
                                     <form:errors path="quantity" cssClass="invalid-feedback"/>
                                 </c:set>
-
                                 <div class="mb-3" style="display: none;">
                                     <label class="form-label">Id:</label>
                                     <form:input type="text" class="form-control" path="id"/>
                                 </div>
-
                                 <div class="mb-3 col-12 col-md-6">
                                     <label class="form-label">Name:</label>
                                     <form:input type="text"
@@ -149,11 +147,8 @@
                                     <button type="submit" class="btn btn-warning">Update</button>
                                 </div>
                             </form:form>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </main>
@@ -163,7 +158,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
-
 </body>
-
 </html>

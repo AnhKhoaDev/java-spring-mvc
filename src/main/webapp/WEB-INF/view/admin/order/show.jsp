@@ -34,7 +34,6 @@
                             <div class="d-flex">
                                 <h3>Table Orders</h3>
                             </div>
-
                             <hr/>
                             <table class=" table table-bordered table-hover">
                                 <thead>
@@ -94,9 +93,7 @@
                                 </ul>
                             </nav>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </main>
@@ -106,7 +103,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
-
 </body>
-
 </html>

@@ -20,7 +20,6 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
     public boolean isValid(RegisterDTO user, ConstraintValidatorContext context) {
         boolean valid = true;
 
-        // Check if password fields match
         if (!user.getPassword().equals(user.getConfirmPassword())) {
             context.buildConstraintViolationWithTemplate("Passwords nhập không chính xác")
                     .addPropertyNode("confirmPassword")
@@ -29,8 +28,6 @@ public class RegisterValidator implements ConstraintValidator<RegisterChecked, R
             valid = false;
         }
 
-        // Additional validations can be added here
-        // check email
         if (this.userService.checkEmailExist(user.getEmail())) {
             context.buildConstraintViolationWithTemplate("Email đã tồn tại")
                     .addPropertyNode("email")

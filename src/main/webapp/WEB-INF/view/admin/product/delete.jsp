@@ -35,7 +35,6 @@
                             <div class="d-flex justify-content-between">
                                 <h3>Delete the product with id = ${id}</h3>
                             </div>
-
                             <hr/>
                             <div class="alert alert-danger">
                                 Are you sure to delete this product ?
@@ -44,16 +43,12 @@
                                        modelAttribute="newProduct">
                                 <div class="mb-3" style="display: none;">
                                     <label class="form-label">Id:</label>
-                                    <form:input value="${id}" type="text" class="form-control"
-                                                path="id"/>
+                                    <form:input value="${id}" type="text" class="form-control" path="id"/>
                                 </div>
                                 <button class="btn btn-danger">Confirm</button>
                             </form:form>
-
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </main>
@@ -63,7 +58,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
-
 </body>
-
 </html>

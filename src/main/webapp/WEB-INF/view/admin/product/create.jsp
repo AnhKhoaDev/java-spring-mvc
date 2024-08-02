@@ -113,10 +113,8 @@
                                     <label class="form-label">Target:</label>
                                     <form:select class="form-select" path="target">
                                         <form:option value="GAMING">Gaming</form:option>
-                                        <form:option value="SINHVIEN-VANPHONG">Sinh viên - Văn phòng
-                                        </form:option>
-                                        <form:option value="THIET-KE-DO-HOA">Thiết kế đồ họa
-                                        </form:option>
+                                        <form:option value="SINHVIEN-VANPHONG">Sinh viên - Văn phòng</form:option>
+                                        <form:option value="THIET-KE-DO-HOA">Thiết kế đồ họa</form:option>
                                         <form:option value="MONG-NHE">Mỏng nhẹ</form:option>
                                         <form:option value="DOANH-NHAN">Doanh nhân</form:option>
                                     </form:select>
@@ -134,9 +132,7 @@
                                     <button type="submit" class="btn btn-primary">Create</button>
                                 </div>
                             </form:form>
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -147,7 +143,5 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 <script src="/js/scripts.js"></script>
-
 </body>
-
 </html>
